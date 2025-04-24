@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Đánh Giá Học Viên - MindX</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7/download.min.js"></script>
+</head>
+<body>
+    <!-- Course Selection Buttons -->
+    <div class="course-selection">
+        <button id="roboticsK12Btn" class="course-btn active">Robotics K12</button>
+        <button id="robotics4Btn" class="course-btn">Robotics 4+</button>
+    </div>
+
+    <!-- Robotics K12 Form -->
+    <div class="container" id="roboticsK12Form">
+        <div class="header">
+            <div class="logo">
+                <img src="logo.png" alt="MindX Logo">
+            </div>
+            <div class="title">
+                <h1>PHIẾU ĐÁNH GIÁ NĂNG LỰC ROBOTICS K12</h1>
+            </div>
+        </div>
+        <div class="section">
+            <h2>A. THÔNG TIN HỌC VIÊN</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="hoTen">Họ và tên Học viên:</label>
+                    <input type="text" id="hoTen" name="hoTen">
+                </div>
+                <div class="form-group">
+                    <label for="tuoiLop">Tuổi: Lớp:</label>
+                    <input type="text" id="tuoiLop" name="tuoiLop">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="monTraiNghiem">Môn trải nghiệm:</label>
+                    <input type="text" id="monTraiNghiem" name="monTraiNghiem">
+                </div>
+                <div class="form-group">
+                    <label for="ngayTraiNghiem">Ngày trải nghiệm:</label>
+                    <input type="date" id="ngayTraiNghiem" name="ngayTraiNghiem">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="giaoVien">Giáo viên hướng dẫn:</label>
+                    <input type="text" id="giaoVien" name="giaoVien">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="coSo">Cơ sở:</label>
+                    <input type="text" id="coSo" name="coSo">
+                </div>
+                <div class="form-group">
+                    <label for="tinhTP">Tỉnh/ Thành phố:</label>
+                    <input type="text" id="tinhTP" name="tinhTP">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>B. ĐÁNH GIÁ NĂNG LỰC</h2>
+            <p class="description">Dưới đây là Kết quả chỉ tiêu đánh giá mức độ sẵn sàng cho Tương lai số của Học viên sau buổi trải nghiệm tại MindX (Mức độ đánh giá theo thang điểm 1 - 5 tương ứng với mức độ thể hiện từ thấp đến cao):</p>
+            
+            <div class="rating-header">
+                <div class="rating-title">NĂNG LỰC</div>
+                <div class="rating-levels">MỨC ĐỘ THỂ HIỆN</div>
+            </div>
+
+            <div class="rating-section">
+                <h3>I. NĂNG LỰC TỰ CHỦ TRONG HỌC TẬP</h3>
+                <div class="rating-table">
+                    <div class="rating-row">
+                        <div class="rating-criteria">Hoàn thành thử thách trong khoảng thời gian quy định</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating1_1" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_1" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_1" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_1" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_1" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rating-row">
+                        <div class="rating-criteria">Biết cách ứng dụng công nghệ để hoàn thành thử thách</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating1_2" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_2" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_2" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_2" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_2" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rating-row">
+                        <div class="rating-criteria">Có kiến thức nền tảng (về văn hoá, tự nhiên, xã hội...)</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating1_3" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_3" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_3" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_3" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating1_3" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>II. NĂNG LỰC SÁNG TẠO</h3>
+                <div class="rating-table">
+                    <div class="rating-row">
+                        <div class="rating-criteria">Sản phẩm tạo ra trong quá trình trải nghiệm có tính sáng tạo (cốt truyện, xây dựng nhân vật, màu sắc, âm thanh, v.v.)</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating2_1" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_1" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_1" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_1" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_1" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rating-row">
+                        <div class="rating-criteria">Khả năng biến tấu từ mẫu có sẵn, tạo ra sản phẩm độc đáo</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating2_2" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_2" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_2" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_2" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating2_2" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>III. NĂNG LỰC TƯ DUY LOGIC</h3>
+                <div class="rating-table">
+                    <div class="rating-row">
+                        <div class="rating-criteria">Biết cách tổ chức suy nghĩ và hành động theo các bước logic và trình tự</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating3_1" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_1" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_1" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_1" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_1" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rating-row">
+                        <div class="rating-criteria">Khi gặp lỗi hoặc vấn đề khi lập trình, học viên biết cách xác định và sửa chữa các lỗi</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating3_2" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_2" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_2" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_2" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating3_2" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>IV. NĂNG LỰC GIAO TIẾP</h3>
+                <div class="rating-table">
+                    <div class="rating-row">
+                        <div class="rating-criteria">Thuyết trình chia sẻ ý tưởng, sản phẩm</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating4_1" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_1" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_1" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_1" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_1" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rating-row">
+                        <div class="rating-criteria">Mạnh dạn, tự tin trong giao tiếp, đặt câu hỏi khi cần</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="rating4_2" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_2" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_2" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_2" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="rating4_2" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>C. ĐÁNH GIÁ NĂNG LỰC</h2>
+            <div class="evaluation-section">
+                <h3>1. Điểm số trung bình Đánh giá mức độ sẵn sàng cho Tương lai số của Học viên:</h3>
+                
+                <div class="rating-table">
+                    <div class="rating-row">
+                        <div class="rating-criteria">Điểm số trung bình</div>
+                        <div class="rating-options">
+                            <label>
+                                <input type="radio" name="average_rating" value="1" data-rating="1">
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="average_rating" value="2" data-rating="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="average_rating" value="3" data-rating="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="average_rating" value="4" data-rating="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="average_rating" value="5" data-rating="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evaluation-levels">
+                    <div class="evaluation-level">
+                        <h4>Mức xuất sắc</h4>
+                        <p>(Điểm trung bình từ 4,5 - 5 điểm)</p>
+                        <p>Ở mức độ cao nhất, học viên không những tự chủ trong học tập, ứng dụng công nghệ mà còn biết cách sáng tạo để tạo ra những sản phẩm độc đáo. Có khả năng tư duy logic để giải quyết các vấn đề phức tạp. Học viên tự tin khi chủ động phát triển trong tương lai số, có thể đóng góp tích cực vào việc phát triển và ứng dụng công nghệ trong cộng đồng hoặc trong lĩnh vực của cá nhân.</p>
+                    </div>
+                    
+                    <div class="evaluation-level">
+                        <h4>Mức tiềm năng</h4>
+                        <p>(Điểm trung bình từ 3,5 - 4 điểm)</p>
+                        <p>Học viên có năng khiếu tư duy, sáng tạo và khả năng ứng dụng công nghệ tương đối linh hoạt. Tiếp thu kiến thức nhanh, tương đối chủ động và tự tin khi giao tiếp. Có tiềm năng để phát triển trong tương lai khi có người hướng dẫn và hỗ trợ phù hợp.</p>
+                    </div>
+                    
+                    <div class="evaluation-level">
+                        <h4>Mức trung bình</h4>
+                        <p>(Điểm trung bình từ 2,5 - 3,5 điểm)</p>
+                        <p>Ở mức độ này, học viên đã bắt đầu phát triển một số kỹ năng cơ bản về ứng dụng công nghệ và tư duy logic. Có thể thực hiện các nhiệm vụ đơn giản như sử dụng phần mềm hoặc trình duyệt trên các trực tuyến, nhưng còn hạn chế trong việc ứng dụng công nghệ để tạo ra sản phẩm sáng tạo. Cần thêm thời gian để phát triển.</p>
+                    </div>
+                    
+                    <div class="evaluation-level">
+                        <h4>Mức cơ bản</h4>
+                        <p>(Điểm trung bình từ 1,5 - 2,5 điểm)</p>
+                        <p>Học viên mới bắt đầu tiếp xúc với công nghệ. Tư duy nhìn nhận và sáng tạo ở mức độ cơ bản. Biết cách ứng dụng công nghệ để truy cập thông tin nhưng chưa hướng dẫn và hỗ trợ rất sâu. Cần tìm kiếm môi trường học tập phù hợp, tổ chức và người hướng dẫn để truyền cảm hứng, động lực cho trẻ.</p>
+                    </div>
+                    
+                    <div class="evaluation-level">
+                        <h4>Mức hạn chế</h4>
+                        <p>(Điểm trung bình từ 1 - 1,5 điểm)</p>
+                        <p>Học viên chưa có nhiều kinh nghiệm về công nghệ. Biết cách ứng dụng công nghệ để truy cập thông tin đơn giản, nhưng chưa tự tin và chủ động trong giao tiếp. Cần tìm kiếm môi trường học tập phù hợp, tổ trình và người hướng dẫn để truyền cảm hứng, động lực cho trẻ.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="teacher-comment">
+                <h3>2. Nhận xét khác từ giáo viên</h3>
+                <textarea id="teacherComment" rows="5"></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="previewBtn">Xem trước</button>
+            <button id="exportPdfBtn">Xuất PDF</button>
+        </div>
+    </div>
+
+    <!-- Robotics 4+ Form -->
+    <div class="container" id="robotics4Form" style="display: none;">
+        <div class="header">
+            <div class="logo">
+                <img src="mindx-logo.png" alt="MindX Logo">
+            </div>
+            <div class="title">
+                <h1>PHIẾU NHẬN XÉT ROBOTICS 4+</h1>
+            </div>
+        </div>
+
+        <!-- Student Info -->
+        <div class="section">
+            <h2>THÔNG TIN HỌC VIÊN</h2>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-field">
+                        <label>Họ và tên:</label>
+                        <div class="dotted-line"></div>
+                    </div>
+                    <div class="info-field">
+                        <label>Lớp:</label>
+                        <div class="dotted-line"></div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-field">
+                        <label>Giáo viên:</label>
+                        <div class="dotted-line"></div>
+                    </div>
+                    <div class="info-field">
+                        <label>Ngày:</label>
+                        <div class="dotted-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evaluation -->
+        <div class="section">
+            <h2>ĐÁNH GIÁ KỸ NĂNG</h2>
+            <div class="evaluation-table">
+                <div class="table-header">
+                    <div class="header-cell">Tiêu chí đánh giá</div>
+                    <div class="header-cell">Điểm</div>
+                </div>
+
+                <!-- Programming Skills -->
+                <div class="skill-section">
+                    <div class="skill-title">
+                        1. Kỹ năng lập trình
+                        <div class="note">(Tối đa: 40 điểm)</div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Hiểu và áp dụng được các khái niệm cơ bản về lập trình</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Khả năng viết code sạch và có cấu trúc</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Khả năng debug và sửa lỗi</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Áp dụng tư duy logic trong giải quyết vấn đề</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                </div>
+
+                <!-- Robotics Skills -->
+                <div class="skill-section">
+                    <div class="skill-title">
+                        2. Kỹ năng Robotics
+                        <div class="note">(Tối đa: 40 điểm)</div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Hiểu biết về cơ chế hoạt động của robot</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Khả năng lắp ráp và cấu hình robot</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Hiểu và sử dụng các cảm biến</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Khả năng tối ưu hóa hiệu suất robot</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-section">
+                    <div class="skill-title">
+                        3. Kỹ năng mềm
+                        <div class="note">(Tối đa: 20 điểm)</div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Khả năng làm việc nhóm và giao tiếp</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-desc">- Tính sáng tạo và chủ động học tập</div>
+                        <div class="skill-score">10</div>
+                        <div class="skill-check"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Evaluation -->
+        <div class="section">
+            <h2>ĐÁNH GIÁ TỔNG QUAN</h2>
+            <div class="overall-score">
+                <div class="score-levels">
+                    <div class="level">
+                        <span class="level-icon">⭐⭐⭐</span>
+                        <h4>Xuất sắc (90-100 điểm)</h4>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="level">
+                        <span class="level-icon">⭐⭐</span>
+                        <h4>Khá (70-89 điểm)</h4>
+                        <div class="skill-check"></div>
+                    </div>
+                    <div class="level">
+                        <span class="level-icon">⭐</span>
+                        <h4>Đạt (50-69 điểm)</h4>
+                        <div class="skill-check"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Comments -->
+        <div class="section">
+            <h2>NHẬN XÉT CỦA GIÁO VIÊN</h2>
+            <div class="teacher-comment">
+                <div class="comment-lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="previewBtn4">Xem trước</button>
+            <button id="exportPdfBtn4">Xuất PDF</button>
+        </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Đang tạo PDF, vui lòng đợi...</p>
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Modal xem trước -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Xem trước phiếu nhận xét</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmExport">Xuất PDF</button>
+                <button id="cancelPreview">Đóng</button>
+            </div>
+        </div>
+        <div class="preview-controls">
+            <button id="zoomIn" title="Phóng to">+</button>
+            <div class="preview-scale">100%</div>
+            <button id="zoomOut" title="Thu nhỏ">-</button>
+            <button id="fitScreen" title="Vừa màn hình">↔</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

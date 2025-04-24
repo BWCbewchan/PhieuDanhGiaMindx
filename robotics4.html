@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Đánh Giá Robotics 4+</title>
+    <link rel="stylesheet" href="robotics4.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Buttons -->
+    <div class="course-selection">
+        <a href="index.html"><button class="course-btn">Robotics K12</button></a>
+        <button class="course-btn active">Robotics 4+</button>
+        <a href="coding.html"><button class="course-btn">Coding</button></a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header-banner">
+            <div class="logo">
+                <img src="logo.png" alt="MindX Logo">
+            </div>
+            <div class="header-title">
+                PHIẾU ĐÁNH GIÁ TRẢI NGHIỆM
+            </div>
+        </div>
+
+        <div class="main-title">
+            PHIẾU ĐÁNH GIÁ NĂNG LỰC ROBOTICS 4+
+        </div>
+
+        <!-- Student Info -->
+        <div class="section">
+            <h2>A. THÔNG TIN HỌC VIÊN</h2>
+            <div class="info-table">
+                <div class="info-row">
+                    <div class="info-cell">
+                        <label for="hoTen">Họ và tên Học viên:</label>
+                        <input type="text" id="hoTen" name="hoTen" class="info-input">
+                    </div>
+                    <div class="info-cell">
+                        <label for="tuoiLop">Tuổi: Lớp</label>
+                        <input type="text" id="tuoiLop" name="tuoiLop" class="info-input">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-cell">
+                        <label for="monTraiNghiem">Môn trải nghiệm:</label>
+                        <input type="text" id="monTraiNghiem" name="monTraiNghiem" class="info-input" value="Robotics 4+">
+                    </div>
+                    <div class="info-cell">
+                        <label for="ngayTraiNghiem">Ngày trải nghiệm:</label>
+                        <input type="date" id="ngayTraiNghiem" name="ngayTraiNghiem" class="info-input">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-cell single-row">
+                        <label for="giaoVien">Giáo viên hướng dẫn:</label>
+                        <input type="text" id="giaoVien" name="giaoVien" class="info-input">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-cell">
+                        <label for="coSo">Cơ sở:</label>
+                        <input type="text" id="coSo" name="coSo" class="info-input">
+                    </div>
+                    <div class="info-cell">
+                        <label for="tinhTP">Tỉnh/ Thành phố:</label>
+                        <input type="text" id="tinhTP" name="tinhTP" class="info-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evaluation Content -->
+        <div class="section">
+            <h2>B. ĐÁNH GIÁ NĂNG LỰC</h2>
+            <p class="description">Dưới đây là kết quả chi tiết đánh giá mức độ sẵn sàng cho bộ môn Robotics của Học viên sau buổi trải nghiệm tại MindX (Mức độ đánh giá theo thang điểm 1-5 tương ứng với mức độ thể hiện của HV trong buổi trải nghiệm từ thấp đến cao):</p>
+            
+            <div class="evaluation-table">
+                <div class="table-header">
+                    <div class="header-cell ability">NĂNG LỰC</div>
+                    <div class="header-cell level">Mức độ thể hiện</div>
+                </div>
+
+                <!-- I. NĂNG LỰC NHẬN BIẾT VÀ KHÁM PHÁ -->
+                <div class="ability-section">
+                    <div class="ability-header">
+                        I. NĂNG LỰC NHẬN BIẾT VÀ KHÁM PHÁ
+                        <div class="note">(GV chỉ chọn 1 trong 5 mức độ biểu hiện dưới đây)</div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên cần giáo viên hỗ trợ phân biệt hình dạng và màu sắc chi tiết lắp ráp.</div>
+                        <div class="ability-level">1</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability1" value="1" id="ability1_1">
+                            <label for="ability1_1" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên nhận diện được màu sắc và hình dạng của các chi tiết lắp ráp, nhưng vẫn còn một số nhầm lẫn và cần giáo viên hỗ trợ.</div>
+                        <div class="ability-level">2</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability1" value="2" id="ability1_2">
+                            <label for="ability1_2" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên nhận diện đúng hình dạng và màu sắc của các chi tiết lắp ráp.</div>
+                        <div class="ability-level">3</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability1" value="3" id="ability1_3">
+                            <label for="ability1_3" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên nhận biết đúng màu sắc, hình dạng chi tiết lắp ráp. Có thể diễn đạt đơn giản chức năng của các bộ phận trong mô hình.</div>
+                        <div class="ability-level">4</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability1" value="4" id="ability1_4">
+                            <label for="ability1_4" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên nhận diện đúng hình dạng, màu sắc chi tiết lắp ráp, nhớ tên mô hình và thể hiện sự sáng tạo qua việc cải tiến mô hình.</div>
+                        <div class="ability-level">5</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability1" value="5" id="ability1_5">
+                            <label for="ability1_5" class="radio-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- II. NĂNG LỰC LẮP RÁP VÀ TƯ DUY KHÔNG GIAN -->
+                <div class="ability-section">
+                    <div class="ability-header">II. NĂNG LỰC LẮP RÁP VÀ TƯ DUY KHÔNG GIAN</div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên gặp nhiều khó khăn trong việc chọn đúng chi tiết và lắp ráp. Sai sót nhiều, cần giáo viên hướng dẫn liên tục.</div>
+                        <div class="ability-level">1</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability2" value="1" id="ability2_1">
+                            <label for="ability2_1" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chọn đúng chi tiết nhưng gặp khó khăn về hướng và vị trí lắp ráp. Cần giáo viên hỗ trợ thường xuyên.</div>
+                        <div class="ability-level">2</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability2" value="2" id="ability2_2">
+                            <label for="ability2_2" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chọn đúng chi tiết, xác định đúng hướng và vị trí nhưng đôi khi mắc lỗi. Cần giáo viên nhắc nhở để sửa sai.</div>
+                        <div class="ability-level">3</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability2" value="3" id="ability2_3">
+                            <label for="ability2_3" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên lắp ráp chính xác, đôi khi sai nhưng có thể sửa lại khi được gợi ý.</div>
+                        <div class="ability-level">4</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability2" value="4" id="ability2_4">
+                            <label for="ability2_4" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chọn đúng chi tiết, lắp ráp chính xác, có thể tự sửa sai mà không cần hỗ trợ.</div>
+                        <div class="ability-level">5</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability2" value="5" id="ability2_5">
+                            <label for="ability2_5" class="radio-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- III. NĂNG LỰC LẬP TRÌNH -->
+                <div class="ability-section">
+                    <div class="ability-header">III. NĂNG LỰC LẬP TRÌNH</div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chưa thể kéo thả khối lệnh, gặp nhiều khó khăn ngay cả khi có giáo viên hỗ trợ.</div>
+                        <div class="ability-level">1</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability3" value="1" id="ability3_1">
+                            <label for="ability3_1" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên có thể kéo thả nhưng chương trình chưa chạy đúng, cần giáo viên chỉnh sửa.</div>
+                        <div class="ability-level">2</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability3" value="2" id="ability3_2">
+                            <label for="ability3_2" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên kéo thả và lập trình để mô hình hoạt động đơn giản, nhưng vẫn cần gợi ý.</div>
+                        <div class="ability-level">3</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability3" value="3" id="ability3_3">
+                            <label for="ability3_3" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên lập trình đúng theo yêu cầu, mà không cần nhiều sự hỗ trợ.</div>
+                        <div class="ability-level">4</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability3" value="4" id="ability3_4">
+                            <label for="ability3_4" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên thao tác nhanh, chính xác, chủ động điều chỉnh thông số trong chương trình.</div>
+                        <div class="ability-level">5</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability3" value="5" id="ability3_5">
+                            <label for="ability3_5" class="radio-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IV. NĂNG LỰC GIAO TIẾP VÀ HỢP TÁC -->
+                <div class="ability-section">
+                    <div class="ability-header">IV. NĂNG LỰC GIAO TIẾP VÀ HỢP TÁC</div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chưa phản hồi hoặc chưa hợp tác với giáo viên trong quá trình học.</div>
+                        <div class="ability-level">1</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability4" value="1" id="ability4_1">
+                            <label for="ability4_1" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên có phản hồi ngắn nhưng chưa thực sự hợp tác với giáo viên, chưa tham gia vào hoạt động lắp ráp mô hình.</div>
+                        <div class="ability-level">2</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability4" value="2" id="ability4_2">
+                            <label for="ability4_2" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên có phản hồi và hợp tác với giáo viên, tuy nhiên vẫn còn rụt rè, chưa thực sự tự tin khi tham gia trải nghiệm.</div>
+                        <div class="ability-level">3</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability4" value="3" id="ability4_3">
+                            <label for="ability4_3" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên chủ động giao tiếp, sẵn sàng trò chuyện và hợp tác với giáo viên trong các hoạt động.</div>
+                        <div class="ability-level">4</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability4" value="4" id="ability4_4">
+                            <label for="ability4_4" class="radio-label"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="ability-row">
+                        <div class="ability-desc">Học viên giao tiếp tự tin, hợp tác tốt với giáo viên và sẵn sàng chia sẻ về mô hình hoặc câu chuyện của mình.</div>
+                        <div class="ability-level">5</div>
+                        <div class="ability-check">
+                            <input type="radio" name="ability4" value="5" id="ability4_5">
+                            <label for="ability4_5" class="radio-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Evaluation -->
+        <div class="section">
+            <h2>C. ĐÁNH GIÁ TỔNG QUAN</h2>
+            
+            <div class="overall-evaluation">
+                <div class="average-score">
+                    <h3>1. Điểm số trung bình Đánh giá mức độ sẵn sàng cho bộ môn Robotics của Học viên:</h3>
+                    <p class="note">(Tính bằng tổng điểm các năng lực chia số năng lực được đánh giá - 4 năng lực)</p>
+
+                    <div class="average-score-container">
+                        <div class="score-label">Điểm số trung bình</div>
+                        <div class="score-value"></div>
+                    </div>
+                    
+                    <div class="evaluation-levels">
+                        <div class="level-section">
+                            <div class="level-icon">🌟</div>
+                            <h4>Mức xuất sắc (Điểm trung bình từ 4 – 5 điểm)</h4>
+                            <p>Học viên thể hiện sự yêu thích đặc biệt với môn Robotics, chủ động khám phá và ghi nhớ tốt các bộ phận trong bộ học cụ. Học viên phân biệt rõ hình dạng, màu sắc của các khối gạch/chi tiết lắp ráp và có thể hoàn thành mô hình với ít hoặc không cần sự trợ giúp. Học viên sử dụng thành thạo các khối lệnh lập trình cơ bản để điều khiển mô hình theo yêu cầu. Trong suốt buổi học, Học viên tích cực hợp tác với giáo viên, tự tin chia sẻ suy nghĩ, trả lời câu hỏi và sáng tạo trong thiết kế mô hình.</p>
+                        </div>
+                        
+                        <div class="level-section">
+                            <div class="level-icon">🚀</div>
+                            <h4>Mức tiềm năng (Điểm trung bình từ 3.5 – 4 điểm)</h4>
+                            <p>Học viên tiếp thu nhanh, có thể nhận biết và gọi tên các bộ phận chính trong bộ học cụ, tuy đôi khi vẫn nhầm lẫn một số chi tiết. Học viên có thể lắp ráp mô hình thành công nhưng đôi lúc xác định sai hướng hoặc vị trí của các chi tiết, cần giáo viên hỗ trợ để điều chỉnh. Học viên thực hiện kéo thả và kết nối các khối lệnh lập trình nhưng vẫn cần thêm hướng dẫn để hiểu rõ cách hoạt động của từng khối lệnh. Trong quá trình học, Học viên hợp tác tốt với giáo viên, có thể giao tiếp nhưng vẫn hơi nhút nhát khi trình bày ý tưởng</p>
+                        </div>
+                        
+                        <div class="level-section">
+                            <div class="level-icon">⚙️</div>
+                            <h4>Mức trung bình (Điểm trung bình từ 2.5 – 3.5 điểm)</h4>
+                            <p>Học viên có thể nhận biết và gọi tên các bộ phận chính trong bộ học cụ nhưng chưa ghi nhớ rõ chức năng của chúng. Khi lắp ráp mô hình, Học viên cần sự hỗ trợ từ giáo viên, đôi khi cần nhắc nhở để hoàn thành đúng theo hướng dẫn. Học viên có thể thực hiện kéo thả các khối lệnh nhưng vẫn gặp khó khăn khi ghép nối và điều chỉnh thông số. Trong giao tiếp, Học viên còn rụt rè, chưa tự tin trả lời câu hỏi hoặc chia sẻ về mô hình của mình.</p>
+                        </div>
+                        
+                        <div class="level-section">
+                            <div class="level-icon">🔍</div>
+                            <h4>Mức cơ bản (Điểm trung bình từ 1.5 – 2.5 điểm)</h4>
+                            <p>Học viên đang dần làm quen với bộ học cụ và gặp khó khăn trong việc nhận biết, ghi nhớ các bộ phận, cần giáo viên nhắc lại nhiều lần. Khi lắp ráp mô hình, Học viên cần nhiều sự hỗ trợ để hoàn thành. Học viên chưa thể tự lựa chọn và lắp ráp chính xác các chi tiết. Trong lập trình, Học viên chưa tự tin thao tác, cần giáo viên hướng dẫn từng bước để thực hiện kéo thả khối lệnh. Học viên ít chủ động giao tiếp, ngại trả lời câu hỏi hoặc tương tác với giáo viên, cần được động viên để tăng sự tự tin và tập trung hơn trong buổi học.</p>
+                        </div>
+                        
+                        <div class="level-section">
+                            <div class="level-icon">🌱</div>
+                            <h4>Mức Đang Hoàn Thiện (1 – 1.5 điểm)</h4>
+                            <p>Học viên đang trong quá trình làm quen với bộ học cụ và cần nhiều sự hỗ trợ từ giáo viên để nhận biết các bộ phận. Khi lắp ráp mô hình, Học viên gặp nhiều khó khăn và cần sự hướng dẫn sát sao để từng bước hoàn thành. Trong lập trình, Học viên chưa thực hiện được thao tác kéo thả và kết nối khối lệnh, cần thêm thời gian để rèn luyện. Học viên ít chủ động giao tiếp, phản hồi còn hạn chế khi giáo viên đặt câu hỏi. Để giúp Học viên tiến bộ, cần tạo môi trường học tập thoải mái, động viên và hướng dẫn phù hợp để từng bước phát triển kỹ năng Robotics.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="teacher-comment">
+                    <h3>2. Nhận xét khác từ giáo viên:</h3>
+                    <textarea id="teacherComment" name="teacherComment" rows="4" class="comment-textarea" placeholder="Nhập nhận xét của giáo viên tại đây..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- MindX Direction -->
+        <div class="section">
+            <h2>D. ĐỊNH HƯỚNG CỦA MINDX</h2>
+            
+            <div class="direction-content">
+                <ul>
+                    <li>
+                        Học viên <input type="text" id="studentNameDirection" class="inline-input" placeholder="Nhập tên học viên"> hoàn toàn phù hợp để tham gia khóa học lắp ráp và lập trình Robot tại MindX. Đây là khóa học giúp Học viên làm quen với Robot thông qua các mô hình đơn giản, dễ hiểu và hấp dẫn. Học viên sẽ được khám phá thế giới lập trình bằng cách kéo thả các khối lệnh trực quan, phát triển tư duy logic, sự sáng tạo và kỹ năng làm việc nhóm. Sau khóa học Học viên sẽ:
+                        <ul>
+                            <li>Làm quen với Robot qua các mô hình vui nhộn và có tính ứng dụng cao.</li>
+                            <li>Nhận biết các bộ phận của Robot như bánh xe, cảm biến, động cơ và bộ điều khiển</li>
+                            <li>Tập tư duy lập trình bằng cách kéo thả khối lệnh để Robot thực hiện các nhiệm vụ đơn giản như di chuyển, phát âm thanh, tránh vật cản.</li>
+                            <li>Phát triển tư duy toán học qua các hoạt động đếm số, nhận biết hình dạng, so sánh lớn – Học viên.</li>
+                            <li>Rèn luyện kỹ năng quan sát và phối hợp tay-mắt khi lắp ráp Robot từng bước.</li>
+                            <li>Phát triển kỹ năng giao tiếp và làm việc nhóm qua các hoạt động thảo luận và chia sẻ ý tưởng với bạn bè.</li>
+                            <li>Thỏa sức sáng tạo với các thử thách lắp ráp từ đơn giản đến nâng cao, khuyến khích Học viên sáng tạo mô hình theo trí tưởng tượng của mình.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Ngoài ra, khóa học được thiết kế với môi trường học tập vui vẻ, trực quan và đầy hứng thú, giúp Học viên tự tin khám phá khoa học – công nghệ ngay từ nhỏ. Đây sẽ là nền tảng vững chắc để Học viên phát triển các cấp độ học nâng cao trong tương lai.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <button id="previewBtn4">Xem trước</button>
+            <button id="exportPdfBtn4">Xuất PDF</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="robotics4.js"></script>
+</body>
+</html> 
