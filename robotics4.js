@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     exportPdfBtn.addEventListener('click', async function() {
-        await generatePDF();
+        await generatePDF('robotics4');
     });
     
     // Thêm nút tính điểm trung bình
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Hàm xuất file PDF
-    async function generatePDF() {
+    async function generatePDF(courseName) {
         // Kiểm tra xem có ít nhất một năng lực được đánh giá không
         if (!hasRatedAbilities()) {
             alert('Vui lòng đánh giá ít nhất một năng lực trong mục B. ĐÁNH GIÁ NĂNG LỰC trước khi xuất PDF.');
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Tạo tên file
             const date = new Date();
             const timestamp = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}_${date.getHours()}-${date.getMinutes()}`;
-            const fileName = `PhieuDanhGia_${studentName}_Robotics4_${timestamp}.pdf`;
+            const fileName = `PhieuDanhGia_${studentName}_${courseName}_${timestamp}.pdf`;
             
             // Tải xuống PDF
             pdf.save(fileName);
