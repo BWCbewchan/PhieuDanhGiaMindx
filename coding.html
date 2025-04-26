@@ -5,15 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phiếu Đánh Giá Coding</title>
     <link rel="stylesheet" href="coding.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/common-buttons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/pdfManager.js" defer></script>
+    <script src="js/preview.js" defer></script>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div>Đang xử lý...</div>
+        </div>
+    </div>
+    
     <!-- Navigation Buttons -->
     <div class="course-selection">
         <a href="index.html"><button class="course-btn">Robotics K12</button></a>
         <a href="robotics4.html"><button class="course-btn">Robotics 4+</button></a>
         <button class="course-btn active">Coding</button>
+        <a href="art.html"><button class="course-btn">Digital Art & Design</button></a>
     </div>
 
     <div class="container">
@@ -397,6 +411,11 @@
         <div class="actions">
             <button id="previewBtn">Xem trước</button>
             <button id="exportPdfBtn">Xuất PDF</button>
+        </div>
+        
+        <!-- Back Button -->
+        <div class="nav-back">
+            <a href="index.html"><button class="back-btn">Quay lại trang chủ</button></a>
         </div>
     </div>
 

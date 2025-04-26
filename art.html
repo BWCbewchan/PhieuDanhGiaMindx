@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art & Design - Đánh giá năng lực</title>
+    <link rel="stylesheet" href="css/art.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/common-buttons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/pdfManager.js" defer></script>
+    <script src="js/preview.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div>Đang xử lý...</div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="course-selection">
+        <a href="index.html"><button class="course-btn">Robotics K12</button></a>
+        <a href="robotics4.html"><button class="course-btn">Robotics 4+</button></a>
+        <a href="coding.html"><button class="course-btn">Coding</button></a>
+        <button class="course-btn active">Digital Art & Design</button>
+    </div>
+
+    <div class="page-container">
+        <div class="container">
+            <div class="header">
+                <h1>BẢNG ĐÁNH GIÁ CHUYÊN MÔN NHÓM TIỂU HỌC VÀ TIỀN TRUNG HỌC</h1>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Tên học viên:</div>
+                    <div class="info-value">
+                        <input type="text" name="student_name" placeholder="Nhập tên học viên">
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Tuổi:</div>
+                    <div class="info-value">
+                        <input type="text" name="age" placeholder="Nhập tuổi">
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Ngày trải nghiệm:</div>
+                    <div class="info-value">
+                        <input type="date" name="experience_date">
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Giảng viên hướng dẫn:</div>
+                    <div class="info-value">
+                        <input type="text" name="teacher_name" placeholder="Nhập tên giảng viên">
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Cơ sở:</div>
+                    <div class="info-value">
+                        <input type="text" name="location" placeholder="Nhập cơ sở">
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Môn trải nghiệm:</div>
+                    <div class="info-value">
+                        <input type="text" name="subject" placeholder="Nhập môn học">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sections-grid">
+                <!-- Column 1 -->
+                <div class="sections-column">
+                    <!-- Section I -->
+                    <div class="section">
+                        <div class="section-header">I. NĂNG LỰC THẨM MỸ</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Ý thức được 1 vài yếu tố thẩm mỹ</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Ý thức được nhiều yếu tố thẩm mỹ</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Ý thức được và vận dụng 1 vài yếu tố thẩm mỹ</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Ý thức được và vận dụng nhiều yếu tố thẩm mỹ</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Ý thức được và vận dụng hai hòa các yếu tố thẩm mỹ</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- Section II -->
+                    <div class="section">
+                        <div class="section-header">II. GU THẨM MỸ</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Gú thẩm mỹ chưa rõ nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có một số biểu hiện của gú thẩm mỹ riêng</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có gú thẩm mỹ cá nhân</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có ý thức về gú thẩm mỹ cá nhân</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Bài có ý thức rõ nét về gú thẩm mỹ cá nhân</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- Section III -->
+                    <div class="section">
+                        <div class="section-header">III. TƯ DUY LOGIC THỊ GIÁC VÀ ĐƯỜNG NÉT</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có sử dụng đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có sử dụng đa dạng các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp sáng tạo các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp độc đáo các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- Section IV -->
+                    <div class="section">
+                        <div class="section-header">IV. KHẢ NĂNG SÁNG TẠO VÀ ỨNG DỤNG THẨM MỸ</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Sáng tạo không đáng kể</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có tính sáng tạo</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có ý thức sáng tạo có ứng dụng</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có ý thức rõ nét về sáng tạo có tính ứng dụng</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có ý thức về nghệ thuật sáng tạo trong ứng dụng</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- Section V -->
+                    <div class="section">
+                        <div class="section-header">V. TRÍ THÔNG MINH HÌNH ẢNH</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Trí thông minh hình ảnh chưa rõ nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có biểu hiện trí thông minh hình ảnh</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có trí thông minh hình ảnh rõ nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có trí thông minh hình ảnh vượt trội</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Trí thông minh hình ảnh là trí thông minh chủ đạo</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="sections-column">
+                    <!-- VI. NĂNG LỰC TƯ DUY LOGIC THỊ GIÁC -->
+                    <div class="section">
+                        <div class="section-header red">VI. NĂNG LỰC TƯ DUY LOGIC THỊ GIÁC</div>
+                        <div class="section-subheader">TIÊU CHÍ ĐƯỜNG NÉT</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có sử dụng đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có sử dụng đa dạng các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp sáng tạo các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp độc đáo các loại đường nét</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- TIÊU CHÍ MÀU SẮC -->
+                    <div class="section">
+                        <div class="section-header yellow">TIÊU CHÍ MÀU SẮC</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp các loại màu sắc</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Cường độ, độ tươi của màu sắc</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Sự rõ ràng và hòa sắc, rõ màu sắc chủ đạo (sự hòa hợp)</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Tính chất đa sắc độ (sự trầm bổng)</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Có kết hợp sáng tạo các tông màu sắc</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- TIÊU CHÍ TỈ LỆ -->
+                    <div class="section">
+                        <div class="section-header yellow">TIÊU CHÍ TỈ LỆ</div>
+                        <div class="chart-container">
+                            <div class="chart-column">
+                                <div class="chart-bar chart-bar-30"></div>
+                                <div class="chart-label">30%</div>
+                                <div class="chart-checkbox"></div>
+                            </div>
+                            <div class="chart-column">
+                                <div class="chart-bar chart-bar-40"></div>
+                                <div class="chart-label">40%</div>
+                                <div class="chart-checkbox"></div>
+                            </div>
+                            <div class="chart-column">
+                                <div class="chart-bar chart-bar-50"></div>
+                                <div class="chart-label">50%</div>
+                                <div class="chart-checkbox"></div>
+                            </div>
+                            <div class="chart-column">
+                                <div class="chart-bar chart-bar-60"></div>
+                                <div class="chart-label">60%</div>
+                                <div class="chart-checkbox"></div>
+                            </div>
+                            <div class="chart-column">
+                                <div class="chart-bar chart-bar-80"></div>
+                                <div class="chart-label">80%</div>
+                                <div class="chart-checkbox"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VII. NĂNG LỰC TỰ CHỦ TRONG HỌC TẬP -->
+                    <div class="section">
+                        <div class="section-header red">VII. NĂNG LỰC TỰ CHỦ TRONG HỌC TẬP</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Hoàn thành thử thách trong khoảng thời gian quy định</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Biết cách ứng dụng công nghệ / công cụ để hoàn thành thử thách</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+
+                    <!-- VIII. NĂNG LỰC GIAO TIẾP -->
+                    <div class="section">
+                        <div class="section-header red">VIII. NĂNG LỰC GIAO TIẾP</div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Thuyết trình chia sẻ ý tưởng, sản phẩm</div>
+                            <div class="checkbox"></div>
+                        </div>
+                        <div class="criteria-row">
+                            <div class="criteria-text">Mạnh dạn, tự tin trong giao tiếp, đặt câu hỏi khi cần</div>
+                            <div class="checkbox"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evaluation Box -->
+            <div class="evaluation-box">
+                <div class="evaluation-header">ĐÁNH GIÁ CHUNG</div>
+                <div class="evaluation-content">
+                    <textarea placeholder="Nhập đánh giá chung về học viên..." rows="6"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button id="previewBtn">Xem trước</button>
+        <button id="exportPdfBtn">Xuất PDF</button>
+    </div>
+    
+    <!-- Back Button -->
+    <div class="nav-back">
+        <a href="index.html"><button class="back-btn">Quay lại trang chủ</button></a>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="previewContent"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/pdfUtils.js"></script>
+    <script src="js/art.js"></script>
+</body>
+
+</html> 

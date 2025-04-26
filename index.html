@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phiếu Đánh Giá Học Viên - MindX</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/common-buttons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="https://unpkg.com/downloadjs@1.4.7/download.min.js"></script>
+    <script src="js/pdfManager.js" defer></script>
+    <script src="js/preview.js" defer></script>
 </head>
 <body>
     <!-- Course Selection Buttons -->
     <div class="course-selection">
-        <button id="roboticsK12Btn" class="course-btn active">Robotics K12</button>
-        <button id="robotics4Btn" class="course-btn">Robotics 4+</button>
+        <button class="course-btn active">Robotics K12</button>
+        <a href="robotics4.html"><button class="course-btn">Robotics 4+</button></a>
         <a href="coding.html"><button class="course-btn">Coding</button></a>
+        <a href="art.html"><button class="course-btn">Digital Art & Design</button></a>
     </div>
 
     <!-- Robotics K12 Form -->
