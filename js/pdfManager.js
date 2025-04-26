@@ -71,7 +71,7 @@ async function generatePDF() {
         pdf.setFillColor(255, 0, 0);
         pdf.rect(margin, boxTop, boxWidth, 32, 'F');
         pdf.setTextColor(255,255,255);
-        pdf.setFont('Times','bold');
+        pdf.setFont('helvetica','bold');
         pdf.setFontSize(16);
         pdf.text('ĐÁNH GIÁ CHUNG', margin + 15, boxTop + 22);
 
@@ -79,7 +79,7 @@ async function generatePDF() {
         pdf.setDrawColor(255,0,0);
         pdf.setLineWidth(1);
         pdf.rect(margin, boxTop + 32, boxWidth, boxHeight, 'D');
-        pdf.setFont('Times','normal');
+        pdf.setFont('helvetica','normal');
         pdf.setFontSize(13);
         pdf.setTextColor(51,51,51);
         const textX = margin + 15;
