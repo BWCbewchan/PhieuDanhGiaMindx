@@ -581,30 +581,14 @@
         <div class="loading-content">
             <div class="spinner"></div>
             <p>Đang tạo PDF, vui lòng đợi...</p>
-            <div class="loading-progress"></div>
         </div>
     </div>
 
-    <!-- Modal xem trước -->
+    <!-- Preview Modal -->
     <div id="previewModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Xem trước phiếu nhận xét</h2>
-                <span class="close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div id="previewContent"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="confirmExport">Xuất PDF</button>
-                <button id="cancelPreview">Đóng</button>
-            </div>
-        </div>
-        <div class="preview-controls">
-            <button id="zoomIn" title="Phóng to">+</button>
-            <div class="preview-scale">100%</div>
-            <button id="zoomOut" title="Thu nhỏ">-</button>
-            <button id="fitScreen" title="Vừa màn hình">↔</button>
+            <span class="close-button">&times;</span>
+            <div id="previewContent"></div>
         </div>
     </div>
 

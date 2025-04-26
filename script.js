@@ -432,4 +432,17 @@ document.addEventListener('DOMContentLoaded', function() {
             evaluationLevels[4].style.backgroundColor = '#e7f5e7'; // Mức hạn chế
         }
     }
+
+    // Add ESC key functionality to close modal
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const previewModal = document.getElementById('previewModal');
+            if (previewModal && previewModal.style.display === 'block') {
+                closeModal();
+            }
+        }
+    });
+    
+    // Initialize the application
+    initApp();
 });

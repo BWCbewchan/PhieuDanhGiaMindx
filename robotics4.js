@@ -94,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Highlight mức đánh giá tương ứng
             highlightEvaluationLevel(averageScore);
         } else {
-            alert('Vui lòng đánh giá ít nhất một năng lực trước khi tính điểm trung bình.');
+            // Hiển thị thông báo rỗng thay vì alert
+            scoreValueElement.textContent = "N/A";
         }
     }
     
@@ -124,40 +125,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hàm xem trước phiếu đánh giá
     function showPreview() {
-        // Kiểm tra xem có ít nhất một năng lực được đánh giá không
-        if (hasRatedAbilities()) {
-            try {
-                window.print();
-            } catch (error) {
-                console.error('Lỗi khi in phiếu:', error);
-                alert('Có lỗi xảy ra khi in phiếu đánh giá. Vui lòng thử lại.');
-            }
-        } else {
-            alert('Vui lòng đánh giá ít nhất một năng lực trong mục B. ĐÁNH GIÁ NĂNG LỰC trước khi xem trước phiếu.');
+        try {
+            window.print();
+        } catch (error) {
+            console.error('Lỗi khi in phiếu:', error);
+            alert('Có lỗi xảy ra khi in phiếu đánh giá. Vui lòng thử lại.');
         }
     }
 
     // Hàm xuất file PDF
     async function generatePDF(courseName) {
-        // Kiểm tra xem có ít nhất một năng lực được đánh giá không
-        if (!hasRatedAbilities()) {
-            alert('Vui lòng đánh giá ít nhất một năng lực trong mục B. ĐÁNH GIÁ NĂNG LỰC trước khi xuất PDF.');
-            return;
-        }
-
         try {
             // Ẩn các phần tử không cần thiết khi xuất PDF
             const actionsDiv = document.querySelector('.actions');
             const navigationButtons = document.querySelector('.course-selection');
             const calculateButton = document.querySelector('.calculate-btn');
+            const backButton = document.querySelector('.nav-back');
             
             const originalActionDisplay = actionsDiv.style.display;
             const originalNavDisplay = navigationButtons.style.display;
             const originalCalcDisplay = calculateButton ? calculateButton.style.display : 'none';
+            const originalBackDisplay = backButton ? backButton.style.display : 'none';
             
             actionsDiv.style.display = 'none';
             navigationButtons.style.display = 'none';
             if (calculateButton) calculateButton.style.display = 'none';
+            if (backButton) backButton.style.display = 'none';
             
             // Tạo bản sao của toàn bộ phiếu đánh giá
             const container = document.querySelector('.container');
@@ -257,6 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             actionsDiv.style.display = originalActionDisplay;
             navigationButtons.style.display = originalNavDisplay;
             if (calculateButton) calculateButton.style.display = originalCalcDisplay;
+            if (backButton) backButton.style.display = originalBackDisplay;
             
             alert(`Phiếu đánh giá đã được tải xuống thành công!\n\nTên file: ${fileName}`);
         } catch (error) {

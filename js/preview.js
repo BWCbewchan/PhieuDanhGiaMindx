@@ -99,6 +99,13 @@ window.onclick = function(event) {
     }
 }
 
+// Close modal when pressing ESC key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modal && modal.style.display === 'block') {
+        modal.style.display = 'none';
+    }
+});
+
 // Add event listeners to preview buttons
 document.addEventListener('DOMContentLoaded', function() {
     const previewButtons = [
