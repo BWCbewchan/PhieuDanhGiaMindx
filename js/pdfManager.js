@@ -13,6 +13,14 @@ async function generatePDF() {
         // Remove action buttons
         contentClone.querySelectorAll('.actions, .nav-back').forEach(el => el.remove());
 
+        // --- Lấy nhận xét ---
+        const textarea = document.querySelector('.evaluation-content textarea');
+        const nhanXet = textarea ? textarea.value : '';
+
+        // Ẩn box nhận xét trong clone để không bị html2canvas chụp lại
+        const evalBox = contentClone.querySelector('.evaluation-box');
+        if (evalBox) evalBox.style.display = 'none';
+
         // Create temporary container
         const tempDiv = document.createElement('div');
         tempDiv.appendChild(contentClone);
@@ -38,7 +46,7 @@ async function generatePDF() {
         const pdf = new jsPDF({
             orientation: 'portrait',
             unit: 'px',
-            format: [pdfWidth, pdfHeight]
+            format: [pdfWidth, pdfHeight + 180] // tăng chiều cao để đủ chỗ cho nhận xét
         });
 
         // Add image to PDF
@@ -52,6 +60,32 @@ async function generatePDF() {
             undefined,
             'FAST'
         );
+
+        // --- Vẽ box nhận xét ---
+        const margin = 30;
+        const boxTop = pdfHeight + 20;
+        const boxHeight = 140;
+        const boxWidth = pdfWidth - margin * 2;
+
+        // Header
+        pdf.setFillColor(255, 0, 0);
+        pdf.rect(margin, boxTop, boxWidth, 32, 'F');
+        pdf.setTextColor(255,255,255);
+        pdf.setFont('Times','bold');
+        pdf.setFontSize(16);
+        pdf.text('ĐÁNH GIÁ CHUNG', margin + 15, boxTop + 22);
+
+        // Content box
+        pdf.setDrawColor(255,0,0);
+        pdf.setLineWidth(1);
+        pdf.rect(margin, boxTop + 32, boxWidth, boxHeight, 'D');
+        pdf.setFont('Times','normal');
+        pdf.setFontSize(13);
+        pdf.setTextColor(51,51,51);
+        const textX = margin + 15;
+        const textY = boxTop + 32 + 25;
+        const maxWidth = boxWidth - 30;
+        pdf.text(pdf.splitTextToSize(nhanXet, maxWidth), textX, textY, {maxWidth: maxWidth, lineHeightFactor:1.5});
 
         // Save PDF
         pdf.save(`phieu_danh_gia_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`);
