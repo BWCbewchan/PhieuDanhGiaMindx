@@ -1,5 +1,15 @@
 window.jsPDF = window.jspdf.jsPDF;
 
+// Load Vietnamese font
+async function loadVietnameseFont() {
+    const fontResponse = await fetch('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    const fontCSS = await fontResponse.text();
+    const fontUrl = fontCSS.match(/url\((.*?)\)/)[1];
+    const font = await fetch(fontUrl);
+    const fontData = await font.arrayBuffer();
+    return fontData;
+}
+
 async function generatePDF() {
     try {
         // Show loading overlay
@@ -26,7 +36,7 @@ async function generatePDF() {
         tempDiv.appendChild(contentClone);
         document.body.appendChild(tempDiv);
 
-        // Generate canvas
+        // Generate canvas for main content
         const canvas = await html2canvas(contentClone, {
             scale: 2,
             useCORS: true,
@@ -39,6 +49,36 @@ async function generatePDF() {
         // Remove temporary container
         document.body.removeChild(tempDiv);
 
+        // Create evaluation text canvas
+        const evalDiv = document.createElement('div');
+        evalDiv.style.width = '535px'; // pdfWidth - 2*margin
+        evalDiv.style.padding = '20px';
+        evalDiv.style.fontFamily = 'Arial, sans-serif';
+        evalDiv.style.fontSize = '13px';
+        evalDiv.style.lineHeight = '1.5';
+        evalDiv.style.color = '#333333';
+        evalDiv.style.backgroundColor = '#ffffff';
+        evalDiv.innerHTML = `
+            <div style="background-color: #ff0000; color: white; padding: 10px; font-weight: bold; font-size: 16px; text-align: center; margin-bottom: 10px;">
+                ĐÁNH GIÁ CHUNG
+            </div>
+            <div style="border: 1px solid #ff0000; padding: 15px; min-height: 100px;">
+                ${nhanXet.replace(/\\n/g, '<br>')}
+            </div>
+        `;
+        document.body.appendChild(evalDiv);
+
+        // Generate canvas for evaluation
+        const evalCanvas = await html2canvas(evalDiv, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff'
+        });
+
+        // Remove evaluation div
+        document.body.removeChild(evalDiv);
+
         // Create PDF with content dimensions
         const pdfWidth = 595; // Standard PDF width
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
@@ -46,10 +86,12 @@ async function generatePDF() {
         const pdf = new jsPDF({
             orientation: 'portrait',
             unit: 'px',
-            format: [pdfWidth, pdfHeight + 180] // tăng chiều cao để đủ chỗ cho nhận xét
+            format: [pdfWidth, pdfHeight + evalCanvas.height + 40], // Add space for evaluation
+            putOnlyUsedFonts: true,
+            compress: true
         });
 
-        // Add image to PDF
+        // Add main content image to PDF
         pdf.addImage(
             canvas.toDataURL('image/jpeg', 1.0),
             'JPEG',
@@ -61,34 +103,21 @@ async function generatePDF() {
             'FAST'
         );
 
-        // --- Vẽ box nhận xét ---
-        const margin = 30;
-        const boxTop = pdfHeight + 20;
-        const boxHeight = 140;
-        const boxWidth = pdfWidth - margin * 2;
+        // Add evaluation image to PDF
+        pdf.addImage(
+            evalCanvas.toDataURL('image/jpeg', 1.0),
+            'JPEG',
+            30, // margin
+            pdfHeight + 20,
+            pdfWidth - 60, // width minus margins
+            evalCanvas.height * (pdfWidth - 60) / evalCanvas.width,
+            undefined,
+            'FAST'
+        );
 
-        // Header
-        pdf.setFillColor(255, 0, 0);
-        pdf.rect(margin, boxTop, boxWidth, 32, 'F');
-        pdf.setTextColor(255,255,255);
-        pdf.setFont('helvetica','bold');
-        pdf.setFontSize(16);
-        pdf.text('ĐÁNH GIÁ CHUNG', margin + 15, boxTop + 22);
-
-        // Content box
-        pdf.setDrawColor(255,0,0);
-        pdf.setLineWidth(1);
-        pdf.rect(margin, boxTop + 32, boxWidth, boxHeight, 'D');
-        pdf.setFont('helvetica','normal');
-        pdf.setFontSize(13);
-        pdf.setTextColor(51,51,51);
-        const textX = margin + 15;
-        const textY = boxTop + 32 + 25;
-        const maxWidth = boxWidth - 30;
-        pdf.text(pdf.splitTextToSize(nhanXet, maxWidth), textX, textY, {maxWidth: maxWidth, lineHeightFactor:1.5});
-
-        // Save PDF
-        pdf.save(`phieu_danh_gia_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`);
+        // Save PDF with Vietnamese filename
+        const filename = `phieu_danh_gia_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`;
+        pdf.save(filename);
 
     } catch (error) {
         console.error('PDF Generation Error:', error);
