@@ -54,15 +54,15 @@ async function generatePDF() {
         evalDiv.style.width = '535px'; // pdfWidth - 2*margin
         evalDiv.style.padding = '20px';
         evalDiv.style.fontFamily = 'Arial, sans-serif';
-        evalDiv.style.fontSize = '13px';
-        evalDiv.style.lineHeight = '1.5';
+        evalDiv.style.fontSize = '9px';
+        evalDiv.style.lineHeight = '1.3';
         evalDiv.style.color = '#333333';
         evalDiv.style.backgroundColor = '#ffffff';
         evalDiv.innerHTML = `
-            <div style="background-color: #ff0000; color: white; padding: 10px; font-weight: bold; font-size: 16px; text-align: center; margin-bottom: 10px;">
+            <div style="background-color: #ff0000; color: white; padding: 6px; font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 6px;">
                 ĐÁNH GIÁ CHUNG
             </div>
-            <div style="border: 1px solid #ff0000; padding: 15px; min-height: 100px;">
+            <div style="border: 1px solid #ff0000; padding: 10px; min-height: 90px;">
                 ${nhanXet.replace(/\\n/g, '<br>')}
             </div>
         `;
